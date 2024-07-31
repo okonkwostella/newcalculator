@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cal</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+    
+ <div class="popo">
+    <div class="clock">
+        <h6 id="hold"></h6>
+    </div> 
+    <h1 id="container">
+        <div class="result"> </div>
+         </h1>
+    
+    <div class="vat">
+         <button class="btn a2">AC</button>
+        <button class="btn a2">()</button>
+         <button  class="btn a2">%</button>
+        <button  class="btn a2">/</button>
+        <button  class="btn">7</button>
+        <button class="btn">8</button>
+        <button  class="btn">9</button>
+        <button  class="btn a2">*</button>
+        <button  class="btn">4</button>
+        <button  class="btn">5</button>
+        <button  class="btn">6</button>
+        <button class="btn a2">-</button>
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="btn a2">+</button>
+        <button class="btn">0</button>
+        <button class="btn a2">.</button>
+        <button class="btn a2">=</button>
+       
+    
+    </div>
+ 
+   
+
+ </div>
+
+   
+
+
+
+
+
+    <script>
+
+    let result =document.querySelector(".result");
+    let button = Array.from(document.getElementsByClassName("btn"));
+
+
+    button.forEach((col) =>{
+        col.onclick = (ee) => {
+            switch (ee.target.innerHTML) {
+                case "=":
+                result.innerHTML = eval(result.innerHTML);
+                    break;
+                    case "AC":
+                        result.innerHTML ='';
+                    break;
+
+                default:
+                    result.innerHTML+= ee.target.innerHTML;
+                    break;
+            }
+        };
+       
+    });
+
+
+    let hold = document.getElementById("hold")
+
+    setInterval(() => {
+        let all = new Date();
+        let hour = all.getHours();
+        let min = all.getMinutes();
+        let sec = all.getSeconds();
+        let h = hour < 10 ? "0" + hour : hour;
+        let m = min < 10 ? "0" + min : min;
+        let s = sec < 10 ? "0" + sec : sec;
+
+
+        hold.innerHTML = h + ":" + m + ":" + s
+        console.log(hold)
+
+    }, 1000);
+
+
+
+    </script>
+</body>
+</html>
